@@ -29,7 +29,7 @@ let goods = [
         description: "Кеды",
         sizes: ["36", "38", "39", "40", "41"],
         price: 3556,
-        available: true,
+        available: false,
     },
     {
         id: 5,
@@ -54,9 +54,9 @@ let basket = [
 
 
 function addToBasket(good, amount) {
-    let goodExists = goods.find(element => element.id == good);
+    let goodExists = goods.find(element => element.id == good && element.available == true);
     if (typeof goodExists == "undefined") {
-        console.log('Такого товара нет в каталоге!')
+        console.log('Товара нет в каталоге/недоступен для заказа!')
     } else {
         let basketUpdate = basket.find(item => item.good == good);
         if (typeof basketUpdate == "undefined") {
