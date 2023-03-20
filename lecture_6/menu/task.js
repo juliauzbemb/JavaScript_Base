@@ -13,14 +13,15 @@ document.addEventListener("DOMContentLoaded", function() {
             // console.log(parentElement);
             const menuSub = parentElement.querySelector('.menu_sub');
             // console.log(menuSub);
-
             if (menuSub != null) {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const menuActive = [...navBar.getElementsByClassName('menu_active')];
                     menuActive.forEach(function(element) {
-                        element.classList.remove('menu_active');
-                    })
+                        if (element != menuSub) {
+                            element.classList.remove('menu_active');
+                        };
+                    });
                     menuSub.classList.toggle('menu_active');
                 })
             } 
