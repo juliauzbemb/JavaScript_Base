@@ -63,12 +63,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     clientBlock.onchange = () => {
         clearTimeout(timeout);
-        renderMessage(clientBlock.value, 'message message_client');
-        const botRandomIndex = Math.floor(Math.random() * botMessages.length)
-        renderMessage(botMessages[botRandomIndex], "message");
-        clientBlock.value = '';
-        timeout = setTimeout(() => {
-            renderMessage('Вы еще здесь?', 'message');
-        }, 30000)
+        if (clientBlock.value.trim().length > 0) {
+            renderMessage(clientBlock.value, 'message message_client');
+            const botRandomIndex = Math.floor(Math.random() * botMessages.length)
+            renderMessage(botMessages[botRandomIndex], "message");
+            clientBlock.value = '';
+            timeout = setTimeout(() => {
+                renderMessage('Вы еще здесь?', 'message');
+            }, 30000)
+        }
     }
 })
